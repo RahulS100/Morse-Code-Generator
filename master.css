@@ -1,0 +1,68 @@
+/*---------------------------------reset---------------------------------------*/
+* {
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+body {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/*---------------------------------navbar--------------------------------------*/
+.navbar-head {
+  height: 60px;
+  text-align: center;
+  border-radius: 2px;
+}
+
+/*----shared class by navbar and footer-----*/
+.foot-nav-heading {
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding-top: 15px;
+}
+
+/*---------------------------------------main section--------------------------*/
+.main-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 80vh;
+}
+
+.io-box-same-prop {
+  height: 400px;
+  width: 500px;
+  box-shadow: 1px 1px 15px 1px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+
+.input-sec {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.output-sec {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-group {
+  margin-top: 10px;
+}
+
+label {
+  font-weight: bold;
+}
+
+/*----------------------------------footer area----------------------------------*/
+.footer-sec {
+  height: 60px;
+  border-radius: 2px;
+  text-align: center;
+}
