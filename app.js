@@ -1,19 +1,27 @@
 //------------------------------variables and dom object area-----------------
-const inputF = $("#input-field");
-const outputF = $("#output-field");
-const convertBtn = $("#convert");
-const copyBtn = $("#copy-btn");
-const reMorseChk = $("#re-morse-check");
+//----------------input section objects---------------------
+const inputF = $("#input-field")[0];
+const convertBtnMorse = $("#convert-to-morse-btn");
+const copyBtnTxt = $("#copy-txt-btn");
+const reMorseChk_txt = $("#re-morse-check-txt")[0];
 
+//-----------------output section objects-------------------
+const outputF = $("#output-field")[0];
+const reMorseChk_Morse = $("#re-morse-check-morse")[0];
+const copyBtnMorse = $("#copy-morse-btn");
+const convertBtnTxt = $("#convert-to-txt-btn");
+
+//---------------IO Container's---------------
 let inputStr = "";
 let outputStr = "";
+let tempStr = "";
 
 //--------------------------main code araa------------------------------------
-convertBtn.click(() => {
-  inputStr = inputF[0].value;
+convertBtnMorse.click(() => {
+  inputStr = inputF.value;
   let lenStr = inputStr.length;
 
-  //--------------Morse Code Converstion--------------
+  //--------------Morse Code Converstion (Text to Morse)--------------
   //--------------------------------------------------
   //----------------Alphabet Morse Codes-----------------
   for (let counter = 0; counter < lenStr; counter++) {
@@ -69,6 +77,8 @@ convertBtn.click(() => {
       outputStr += "-.-- ";
     } else if (inputStr[counter] === "Z" || inputStr[counter] === "z") {
       outputStr += "--.. ";
+    } else if (inputStr[counter] === " ") {
+      outputStr += " ";
     }
 
     //----------Digit Morse Codes----------
@@ -96,16 +106,117 @@ convertBtn.click(() => {
   }
 
   //----------Reverse Morse Check for More Security----------
-  if (reMorseChk[0].checked) {
+  if (reMorseChk_txt.checked) {
+    let outStrLen = outputStr.length - 1;
+    tempStr = "";
+    for (let counter = outStrLen; counter >= 0; counter--) {
+      tempStr += outputStr[counter];
+    }
+    outputStr = tempStr;
+    tempStr = "";
   }
 
   //----------Reset Things----------
-  inputF[0].value = "";
-  outputF[0].value = outputStr;
+  inputF.value = "";
+  outputF.value = outputStr;
   outputStr = "";
+  inputStr = "";
 });
 
-//-------------------Copy Button-------------------
-copyBtn.click(()=>{
-    
-})
+//-------------------Morse Code Copy Button-------------------
+copyBtnMorse.click(() => {
+  outputF.select();
+  navigator.clipboard.writeText(outputF.value);
+  outputF.value = "";
+});
+
+//-----------------------------------Morse Code Converstion (Morse to Text)--------------------------
+//---------------------------------------------------------------------------------------------------
+convertBtnTxt.click(() => {
+  outputStr = outputF.value;
+  let outStrLen = outputStr.length;
+
+  //-----Place a Space in the back of String-----
+  outputStr += " ";
+
+  //----------Reverse Morse Removal----------
+  if (reMorseChk_Morse.checked) {
+    tempStr = "";
+    for (let counter = outStrLen; counter >= 0; counter--) {
+      tempStr += outputStr[counter];
+    }
+    outputStr = tempStr;
+    tempStr = "";
+  }
+
+  //--------------------------Morse to text Comparison-------------------
+  for (let counter = 0; counter < outStrLen; counter++) {
+    tempStr += outputStr[counter];
+    if (outputStr[counter + 1] === " ") {
+      tempStr = tempStr.trim();
+
+      //----------digit morse codes----------
+
+      if (tempStr === ".-") inputStr += "A";
+      else if (tempStr === "-...") inputStr += "B";
+      else if (tempStr === "-.-.") inputStr += "C";
+      else if (tempStr === "-..") inputStr += "D";
+      else if (tempStr === ".") inputStr += "E";
+      else if (tempStr === "..-.") inputStr += "F";
+      else if (tempStr === "--.") inputStr += "G";
+      else if (tempStr === "....") inputStr += "H";
+      else if (tempStr === "..") inputStr += "I";
+      else if (tempStr === ".---") inputStr += "J";
+      else if (tempStr === "-.-") inputStr += "K";
+      else if (tempStr === ".-..") inputStr += "L";
+      else if (tempStr === "--") inputStr += "M";
+      else if (tempStr === "-.") inputStr += "N";
+      else if (tempStr === "---") inputStr += "O";
+      else if (tempStr === ".--.") inputStr += "P";
+      else if (tempStr === "--.-") inputStr += "Q";
+      else if (tempStr === ".-.") inputStr += "R";
+      else if (tempStr === "...") inputStr += "S";
+      else if (tempStr === "-") inputStr += "T";
+      else if (tempStr === "..-") inputStr += "U";
+      else if (tempStr === "...-") inputStr += "V";
+      else if (tempStr === ".--") inputStr += "W";
+      else if (tempStr === "-..-") inputStr += "X";
+      else if (tempStr === "-.--") inputStr += "Y";
+      else if (tempStr === "--..") inputStr += "Z";
+
+      //----------digit morse codes----------
+      else if (tempStr === ".----") inputStr += "1";
+      else if (tempStr === "..---") inputStr += "2";
+      else if (tempStr === "...--") inputStr += "3";
+      else if (tempStr === "....-") inputStr += "4";
+      else if (tempStr === ".....") inputStr += "5";
+      else if (tempStr === "-....") inputStr += "6";
+      else if (tempStr === "--...") inputStr += "7";
+      else if (tempStr === "---..") inputStr += "8";
+      else if (tempStr === "----.") inputStr += "9";
+      else if (tempStr === "-----") inputStr += "0";
+    //   else inputStr = "Not a vaild morse pattern?"
+
+      //----------Reset String----------
+      tempStr = "";
+
+      //-----------space chk and adding a space-----------
+      if (outputStr[counter + 2] === " ") {
+        inputStr += " ";
+      }
+    }
+  }
+
+  //----------Morse to Text Output----------
+  inputF.value = inputStr;
+  inputStr = "";
+  outputStr = "";
+  outputF.value = "";
+});
+
+//-------------------Txt Copy Button-------------------
+copyBtnTxt.click(() => {
+  inputF.select();
+  navigator.clipboard.writeText(inputF.value);
+  inputF.value = "";
+});

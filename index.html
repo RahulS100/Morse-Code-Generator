@@ -31,7 +31,7 @@
       <!-----------------input container--------------->
       <div class="input-sec io-box-same-prop">
         <div class="form-group">
-          <label for="input-field">Message</label>
+          <label for="input-field">Text</label>
           <textarea
             type="text"
             id="input-field"
@@ -42,31 +42,41 @@
         </div>
 
         <div class="form-group">
-          <input type="checkbox" id="re-morse-check" />
-          <label for="re-morse-check">Reverse Morse</label>
+          <input type="checkbox" id="re-morse-check-txt" />
+          <label for="re-morse-check-txt">Reverse Morse</label>
         </div>
 
         <div class="form-group">
-          <button class="btn btn-outline-dark" id="convert">Convert</button>
+          <button class="btn btn-outline-dark" id="convert-to-morse-btn">
+            Convert
+          </button>
+          <button class="btn btn-outline-dark" id="copy-txt-btn">Copy</button>
         </div>
       </div>
 
       <!-----------------output container--------------->
       <div class="output-sec io-box-same-prop">
         <div class="form-group">
-          <label for="input-field">Code</label>
+          <label for="input-field">Morse Code</label>
           <textarea
             type="text"
             id="output-field"
             class="form-control"
             rows="5"
             cols="30"
-            readonly
           ></textarea>
         </div>
 
         <div class="form-group">
-          <button class="btn btn-outline-dark" id="copy-btn">Copy</button>
+          <input type="checkbox" id="re-morse-check-morse" />
+          <label for="re-morse-check-morse">Reverse Morse</label>
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-outline-dark" id="convert-to-txt-btn">
+            Convert
+          </button>
+          <button class="btn btn-outline-dark" id="copy-morse-btn">Copy</button>
         </div>
       </div>
     </section>

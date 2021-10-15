@@ -26,8 +26,8 @@ body {
 /*---------------------------------------main section--------------------------*/
 .main-container {
   display: flex;
-  justify-content: space-around;
   align-items: center;
+  justify-content: center;
   height: 80vh;
 }
 
@@ -50,6 +50,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-left: 50px;
 }
 
 .form-group {
@@ -60,9 +61,76 @@ label {
   font-weight: bold;
 }
 
+.form-control {
+  font-weight: bold;
+}
+
 /*----------------------------------footer area----------------------------------*/
 .footer-sec {
   height: 60px;
   border-radius: 2px;
   text-align: center;
+}
+
+/*-------------------------All Screen Friendly Code--------------------------*/
+/*---------------------------------------------------------------------------*/
+
+/*-------------------------Shared Media query---------------*/
+@media screen and (max-width: 1000px) {
+  .main-container {
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .io-box-same-prop {
+    box-shadow: 1px 1px 15px 1px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/*-----------screen-width: 320 to 400px------------*/
+@media screen and (min-width: 320px) and (max-width: 400px) {
+  .io-box-same-prop {
+    height: 300px;
+    width: 300px;
+    margin: 10px 0 10px 0;
+    padding: 15px;
+  }
+}
+
+/*-----------screen-width: 400 to 600px------------*/
+@media screen and (min-width: 400px) and (max-width: 600px) {
+  .io-box-same-prop {
+    height: 400px;
+    width: 380px;
+    margin: 15px 0 15px 0;
+    padding: 15px;
+  }
+}
+
+/*-----------screen-width: 600 to 800px------------*/
+@media screen and (min-width: 600px) and (max-width: 800px) {
+  .io-box-same-prop {
+    height: 450px;
+    width: 550px;
+    margin: 20px 0 20px 0;
+    padding: 10px;
+  }
+}
+
+/*-----------screen-width: 800 to 1000px------------*/
+@media screen and (min-width: 800px) and (max-width: 1000px) {
+  .io-box-same-prop {
+    height: 500px;
+    width: 700px;
+    margin: 20px 0 20px 0;
+    padding: 10px;
+  }
+}
+
+/*-----------screen-width: 1000 to 1100px------------*/
+@media screen and (min-width: 1000px) and (max-width: 1100px) {
+  .io-box-same-prop {
+    height: 350px;
+    width: 450px;
+  }
 }
