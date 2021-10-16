@@ -7,6 +7,7 @@
 
 body {
   color: rgba(255, 255, 255, 0.3);
+  overflow: hidden;
 }
 
 /*---------------------------------notification section------------------------*/
@@ -32,6 +33,7 @@ body {
 .notify-heading {
   font-size: 1rem;
   font-weight: bold;
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .cross-btn {
@@ -55,8 +57,9 @@ body {
   transition-property: all;
   transition-duration: 300ms;
   transition-timing-function: ease-in-out;
-  transform: translateX(-300px);
+  transform: translateX(-305px);
 }
+
 
 /*---------------------------------navbar--------------------------------------*/
 .navbar-head {
