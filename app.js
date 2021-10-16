@@ -11,6 +11,10 @@ const reMorseChk_Morse = $("#re-morse-check-morse")[0];
 const copyBtnMorse = $("#copy-morse-btn");
 const convertBtnTxt = $("#convert-to-txt-btn");
 
+//----------------notification handling object---------------
+const notificationCancelBtn = $("#notification-cancel-btn");
+const notificationContainer = $("#notification-container");
+
 //---------------IO Container's---------------
 let inputStr = "";
 let outputStr = "";
@@ -183,7 +187,6 @@ convertBtnTxt.click(() => {
       else if (tempStr === "-..-") inputStr += "X";
       else if (tempStr === "-.--") inputStr += "Y";
       else if (tempStr === "--..") inputStr += "Z";
-
       //----------digit morse codes----------
       else if (tempStr === ".----") inputStr += "1";
       else if (tempStr === "..---") inputStr += "2";
@@ -195,7 +198,7 @@ convertBtnTxt.click(() => {
       else if (tempStr === "---..") inputStr += "8";
       else if (tempStr === "----.") inputStr += "9";
       else if (tempStr === "-----") inputStr += "0";
-    //   else inputStr = "Not a vaild morse pattern?"
+      //   else inputStr = "Not a vaild morse pattern?"
 
       //----------Reset String----------
       tempStr = "";
@@ -216,7 +219,30 @@ convertBtnTxt.click(() => {
 
 //-------------------Txt Copy Button-------------------
 copyBtnTxt.click(() => {
-  inputF.select();
-  navigator.clipboard.writeText(inputF.value);
-  inputF.value = "";
+  /*-----check if field is empty or not-----*/
+  if (inputF.value === "") showNotification();
+  else {
+    inputF.select();
+    navigator.clipboard.writeText(inputF.value);
+    inputF.value = "";
+  }
 });
+
+//------------------------------notification handing------------------------
+//-----------------cancel notification---------------------
+notificationCancelBtn.click(() => {
+  notificationContainer.addClass("out-animation");
+  setTimeout(() => {
+    notificationContainer.css("display", "none");
+    notificationContainer.removeClass("in-animation");
+
+  }, 300);
+});
+
+function showNotification() {
+  notificationContainer.css("display", "flex");
+  setTimeout(() => {
+    notificationContainer.addClass("in-animation");
+    notificationContainer.removeClass("out-animation");
+  }, 300);
+}
