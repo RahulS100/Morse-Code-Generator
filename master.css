@@ -88,6 +88,7 @@ body {
   width: 500px;
   box-shadow: 1px 1px 15px 1px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
+  margin: 40px 0 40px 0;
 }
 
 .input-sec {
